@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ControllerBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed;
     void Start()
     {
         
