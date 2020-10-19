@@ -5,4 +5,4 @@ Petit test-exo platformer réalisé sur Unity en solo
 - Creation du menu
 - Creation d'un niveau prototype
 
-***/!\ En construction...
+***/!\ En construction...***
