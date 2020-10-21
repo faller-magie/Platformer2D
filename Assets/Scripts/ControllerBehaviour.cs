@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 
 public class ControllerBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed; 
-    [SerializeField] private float maxSpeed;
+    [SerializeField] private float speed = 7; 
+    [SerializeField] private float maxSpeed = 50;
     [SerializeField] private LayerMask Ground;
-    [SerializeField] private float JumpForce;
+    [SerializeField] private float JumpForce = 3.5f;
 
     private Controls controls;
     private Vector2 direction;
