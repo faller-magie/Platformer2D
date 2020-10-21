@@ -13,6 +13,11 @@ public class ControllerBehaviour : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D myRB;
 
+
+    public bool IsOnGround = false;
+    public float JumpForce;
+    public GameObject player;
+
     private void OnEnable()
     {
         controls = new Controls();
@@ -24,7 +29,11 @@ public class ControllerBehaviour : MonoBehaviour
 
     private void OnJumpPerformed(InputAction.CallbackContext obj)
     {
-        myRB.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+        if(IsOnGround)
+        {
+            myRB.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            IsOnGround = false;
+        }
     }
 
     private void Move_performed(InputAction.CallbackContext obj)
@@ -46,14 +55,23 @@ public class ControllerBehaviour : MonoBehaviour
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     private void FixedUpdate()
     {
-        var myRigidBody = GetComponent<Rigidbody2D>();
+        var playerDirection = new Vector2(direction.x, 0);
         direction.y = 0;
-        if (myRigidBody.velocity.sqrMagnitude < maxSpeed)
-            myRigidBody.AddForce(direction * speed);
+        if (myRB.velocity.sqrMagnitude < maxSpeed)
+            myRB.AddForce(direction * speed);
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(player.gameObject.CompareTag("Ground"))
+        {
+            IsOnGround = true;
+        }
     }
 }

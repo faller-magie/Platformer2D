@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayMenu ()
+    public void PlayMenu()
     {
         SceneManager.LoadScene("SampleScene");
     }
@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
-    public void QuitMenu ()
+    public void QuitMenu()
     {
         Debug.Log("Fermeture du jeu");
         Application.Quit(); 

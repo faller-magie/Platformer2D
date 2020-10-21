@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/Controls.inputactions'
 
 using System;
 using System.Collections;
@@ -124,7 +124,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""645e0daa-f1d6-4ac7-a5cf-b63103a7e165"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
