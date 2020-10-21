@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 
 public class ControllerBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed; 
     [SerializeField] private float maxSpeed;
+    [SerializeField] private LayerMask Ground;
+    [SerializeField] private float JumpForce;
 
     private Controls controls;
     private Vector2 direction;
@@ -15,8 +17,6 @@ public class ControllerBehaviour : MonoBehaviour
 
 
     public bool IsOnGround = false;
-    public float JumpForce;
-    public GameObject player;
 
     private void OnEnable()
     {
@@ -55,7 +55,6 @@ public class ControllerBehaviour : MonoBehaviour
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
     }
 
     private void FixedUpdate()
@@ -67,9 +66,9 @@ public class ControllerBehaviour : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(player.gameObject.CompareTag("Ground"))
+        if(other.gameObject.CompareTag("Ground"))
         {
             IsOnGround = true;
         }
