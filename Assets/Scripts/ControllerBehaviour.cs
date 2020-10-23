@@ -6,14 +6,18 @@ using UnityEngine.InputSystem;
 
 public class ControllerBehaviour : MonoBehaviour
 {
-    [SerializeField] private float speed = 7; 
-    [SerializeField] private float maxSpeed = 50;
-    [SerializeField] private LayerMask Ground;
-    [SerializeField] private float JumpForce = 3.5f;
+    //Initialisation des variables speed, MaxSpeed, Ground & JumpForce à reusiner
+    [SerializeField] private float speed = 7; //notre variable de vitesse sans ça, le personnage ne peut pas se déplacer
+    [SerializeField] private float maxSpeed = 50; //notre variable de limite de vitesse sinon la vitesse se cumulera à l'infini
+    [SerializeField] private LayerMask Ground; //notre variable de calque de sol, pour identifier le sol
+    [SerializeField] private float JumpForce = 3.5f; //notre variable de force de saut
 
     private Controls controls;
     private Vector2 direction;
     private Rigidbody2D myRB;
+
+    private Animator MyAnim;
+    private SpriteRenderer myRenderer;
 
 
     public bool IsOnGround = false;
@@ -59,10 +63,20 @@ public class ControllerBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         var playerDirection = new Vector2(direction.x, 0);
         direction.y = 0;
         if (myRB.velocity.sqrMagnitude < maxSpeed)
             myRB.AddForce(direction * speed);
+
+        if(direction.x < 0)
+        {
+            myRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            myRenderer.flipX = false;
+        }
 
     }
 

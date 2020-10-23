@@ -10,12 +10,12 @@ public class LoadingScript : MonoBehaviour
     [SerializeField] private string SceneToLoad;
 
 
-    public void LoadScene(string SceneToLoad)
+    public void LoadScene()
     {
-        StartCoroutine(Load(SceneToLoad));
+        StartCoroutine(Load());
     }
 
-    private IEnumerator Load(string SceneToLoad)
+    private IEnumerator Load()
     {
         var Loading_ScreenInstance = Instantiate(loadingScreen);
         DontDestroyOnLoad(Loading_ScreenInstance);
@@ -31,11 +31,14 @@ public class LoadingScript : MonoBehaviour
             {
                 loading.allowSceneActivation = true;
                 loadingAnimator.SetTrigger("Disparition");
+   
             }
 
             yield return new WaitForSeconds(AnimationTime);
-
         }
 
     }
+
+ 
+
 }
