@@ -11,4 +11,4 @@ Petit test-exo platformer réalisé sur Unity en solo
 - Un chargement sauvage à été ajouté !
 
 
-***/!\ En construction...***
+***Le jeu est jouable mais il manque des ennemis et plein d'autres choses...***
