@@ -59,6 +59,8 @@ public class ControllerBehaviour : MonoBehaviour
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        myRenderer = GetComponent<SpriteRenderer>();
+        MyAnim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -68,7 +70,11 @@ public class ControllerBehaviour : MonoBehaviour
         direction.y = 0;
         if (myRB.velocity.sqrMagnitude < maxSpeed)
             myRB.AddForce(direction * speed);
-
+        var isRunning = direction.x != 0;
+        var isJumping = myRB.velocity.y != 0;
+        MyAnim.SetBool("IsRunning", isRunning);
+        MyAnim.SetBool("IsJumping", isJumping);
+        
         if(direction.x < 0)
         {
             myRenderer.flipX = true;
